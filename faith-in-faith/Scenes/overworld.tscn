@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dv88f6mnadll7"]
+
+[ext_resource type="Script" uid="uid://017wjylndvjv" path="res://Scripts/Player/player.gd" id="1_l45s6"]
+[ext_resource type="Texture2D" uid="uid://cu4ffopgcrldl" path="res://art/faith.png" id="2_6s5ae"]
+[ext_resource type="PackedScene" uid="uid://cgx37hfspqnn1" path="res://Scenes/wall.tscn" id="3_i8gr5"]
+[ext_resource type="PackedScene" uid="uid://cmpay2xhbdbtu" path="res://Scenes/interactable.tscn" id="4_s368d"]
+[ext_resource type="Script" uid="uid://barkx46tp5ohy" path="res://Scripts/UI/deckView.gd" id="5_4qj6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s5ae"]
+size = Vector2(36, 43)
+
+[node name="Overworld" type="Node2D" unique_id=1473250204]
+position = Vector2(0, -3)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1817751212]
+script = ExtResource("1_l45s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=313061184]
+position = Vector2(5, 2.5)
+shape = SubResource("RectangleShape2D_6s5ae")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=619193556]
+position = Vector2(5, -2)
+texture = ExtResource("2_6s5ae")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1517764403]
+position_smoothing_enabled = true
+
+[node name="wall" parent="." unique_id=1226692308 instance=ExtResource("3_i8gr5")]
+position = Vector2(-122, 66)
+
+[node name="wall2" parent="." unique_id=617229525 instance=ExtResource("3_i8gr5")]
+position = Vector2(9, 127)
+
+[node name="wall3" parent="." unique_id=904954339 instance=ExtResource("3_i8gr5")]
+position = Vector2(-57, 129)
+
+[node name="wall4" parent="." unique_id=614616576 instance=ExtResource("3_i8gr5")]
+position = Vector2(77, 129)
+
+[node name="interactable" parent="." unique_id=462831467 instance=ExtResource("4_s368d")]
+position = Vector2(-174, -15)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=85340886]
+
+[node name="DeckView" type="Control" parent="CanvasLayer" unique_id=784204485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_4qj6l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeckView" unique_id=1192329380]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20662326, 0.11060294, 0.03196718, 0.7882353)
+
+[node name="Label" type="Label" parent="CanvasLayer/DeckView" unique_id=1654118881]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "***** deck *****"
